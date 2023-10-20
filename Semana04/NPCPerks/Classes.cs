@@ -9,5 +9,6 @@
         Wretch,
         Vagabond,
         Prophet,
-        Samurai
+        Samurai,
+        Boss
     }

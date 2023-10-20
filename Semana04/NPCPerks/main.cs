@@ -1,11 +1,12 @@
 using System;
 
-namespace NPCPerks
-{
     class Program
     {
         static void Main(string[] args)
         {
+            // Variáveis para NPCs Especiais
+            Perks y =  Perks.Charisma | Perks.Intelligence | Perks.Luck | Perks.Resistance;
+            
             // Variável para guardar número de NPCs
             int numNPCs;
 
@@ -35,6 +36,10 @@ namespace NPCPerks
                     Console.Write($"NPC {i + 1} tem classe {(Classes) j}? (s/n): ");
                     input = Console.ReadLine();
 
+                    if (input == "Boss"){
+                      npcClasses[i] = Classes.Boss;
+                      npcPerks[i] = y;
+                    }
                     // Determinar característica de NPC atual 
                     // com base na sua classe
                     if (input == "s")
@@ -44,10 +49,10 @@ namespace NPCPerks
                         switch ((Classes) j)
                         {
                         case (Classes) 0:
-                            npcPerks[i] = Perks.Combat;
+                            npcPerks[i] = Perks.Combat | Perks.Intelligence;
                             break;
                         case (Classes) 1:
-                            npcPerks[i] = Perks.Lockpick;
+                            npcPerks[i] = Perks.Lockpick | Perks.Stealth;
                             break;
                         case (Classes) 2:
                             npcPerks[i] = Perks.Intelligence;
@@ -56,7 +61,7 @@ namespace NPCPerks
                             npcPerks[i] = Perks.Combat;
                             break;
                         case (Classes) 4:
-                            npcPerks[i] = Perks.Lockpick;
+                            npcPerks[i] = Perks.Lockpick | Perks.None;
                             break;
                         case (Classes) 5:
                             npcPerks[i] = Perks.Luck;
@@ -92,8 +97,13 @@ namespace NPCPerks
                 // Mostrar característica de NPC atual no ecrã
                 Console.WriteLine($"\t Característica: {npcPerks[i]}");
 
+                // Mostrar mensagem especíal para um dos NPCs
+                if(npcClasses[i] == Classes.Boss){
+                  Console.WriteLine("Este personagem aparenta ser mais forte que todos");
+                }
+
                 Console.WriteLine();
             }
         }
-    }
+    
 }
