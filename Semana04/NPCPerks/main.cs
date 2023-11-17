@@ -27,7 +27,7 @@ using System;
             // Ciclo FOR para pedir características de cada NPC
             for (int i = 0; i < numNPCs; i++)
             {
-                for (int j = 0; j < Enum.GetNames(typeof(Classes)).Length; j++)
+                for (int j = 0; j < Enum.GetNames(typeof(Classes - 1)).Length; j++)
                 {
                     // Variável que irá guardar input do utilizador em cada ciclo
                     string input;
@@ -99,7 +99,7 @@ using System;
 
                 // Mostrar mensagem especíal para um dos NPCs
                 if(npcClasses[i] == Classes.Boss){
-                  Console.WriteLine("Este personagem aparenta ser mais forte que todos");
+                  Console.WriteLine(" Este personagem aparenta ser mais forte que todos");
                 }
 
                 Console.WriteLine();
