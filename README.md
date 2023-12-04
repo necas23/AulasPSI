@@ -1,0 +1,1 @@
+dotnet new console-Classic --nrt=false --langVersion 8.0 -n BCPropriedades
