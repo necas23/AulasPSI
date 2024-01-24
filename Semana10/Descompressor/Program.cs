@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.IO.Compression;
 
 namespace Descompressor
 {
@@ -16,6 +18,9 @@ namespace Descompressor
             if(resposta == 1){
               Console.WriteLine("Escolheu comprimir o ficheiro!");
               Comprimir(ficheiro);
+            }else{
+              Console.WriteLine("Escolheu descomprimir o ficheiro!");
+              Descomprimir(ficheiro);
             }
         }
       
@@ -41,7 +46,21 @@ namespace Descompressor
         
           private static void Descomprimir(string ficheiro)
           {
-                
+               string line;
+
+               FileStream fs = new FileStream(ficheiro, FileMode.Open,           
+               FileAccess.Read);
+
+               GZipStream gzs = new GZipStream(fs, CompressionMode.Decompress);
+
+               StreamReader sw = new StreamReader(gzs);
+
+               while ((line = sw.ReadLine()) != null)
+               {
+                   Console.WriteLine(line);
+               }
+
+               sw.Close();
           }
     }
 }
